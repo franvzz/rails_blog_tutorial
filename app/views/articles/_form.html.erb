@@ -1,0 +1,22 @@
+<!-- Si la var "name" no esta definida se pone default "New" -->
+<% name ||= 'New' %>
+<div style="width:80%; margin:0 auto;">
+  <h1><%= name %> Article</h1>
+  <% @article.errors.full_messages.each do |message| %>
+    <div class="be-red white top-space">
+      * <%= message %>
+    </div>
+  <% end %>
+
+  <%= form_for(@article) do |f| %>
+    <div class="field">
+      <%= f.text_field :title, class: "form-control", placeholder: "Título" %>
+    </div>
+    <div class="field">
+      <%= f.text_area :body, class: "form-control", rows: 20, placeholder: "Escribe aquí el contenido del artículo" %>
+    </div>
+    <div class="field">
+      <%= f.submit "Save", class: "btn be-red white" %>
+    </div>
+  <% end %>
+</div>
